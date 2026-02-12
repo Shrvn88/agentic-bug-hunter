@@ -1,0 +1,4 @@
+pydantic
+requests
+pyyaml
+google-generativeai

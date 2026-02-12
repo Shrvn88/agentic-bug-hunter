@@ -1,0 +1,55 @@
+ID,bug_line,Explanation
+16,9,"BUG: In `vecEditMode`, re-declaring an existing `smartVec` label with `.label('sLabel').copyLabel(false)` overwrites the initial definition instead of extending it."
+32,2,BUG: `vForce` method expects a voltage unit but is provided with a current unit (uA).
+32,3,BUG: Functional burst 'MPBurst2' is used before being defined.
+32,5,BUG : Functional burst 'MPBurst1' is called without a preceding definition within the provided code scope.
+25,5,"BUG: RDI_END() is called without a preceding RDI_BEGIN(), violating the requirement for these functions to always be implemented together to define an RDI block."
+25,6,"RDI protocol commands, such as `rdi.protocol().write().execute()`, must be enclosed within an `RDI_BEGIN()`/`RDI_END()` block."
+25,7,Missing RDI_END() call to complete the RDI block started by RDI_BEGIN().
+10,4,"BUG : `rdi.id(4).getHumanSeniority(""02"")` on line 4 is not explicitly linked to the RDI operation `readHumanSeniority().execute()` on line 2, risking outdated data retrieval."
+26,6,"BUG: The `FS` method receives a `double` value of `250`, which is likely interpreted as `250 Hz`, but the comment `/* kHz */` indicates an intended value of `250000 Hz`."
+26,10,"BUG: `read()` is used as the terminal method for a waveform operation after `FS()`, where `execute()` or `executeAndRead()` is expected."
+26,10,"BUG : The FS method's input `250` is commented as `kHz`, but if FS expects frequency in `Hz`, the provided value `250` is incorrect."
+23,9,"BUG: The `rdi.smartVec()` method expects its ID argument to be a string literal or a declared variable, but received an undeclared identifier 'id1'."
+23,13,BUG: Undeclared identifier 'id2' used as `rdi.smartVec` instance ID. The argument must be a string literal or a declared variable.
+23,17,BUG : Undeclared identifier 'id3' used as an ID for `rdi.smartVec`. The `smartVec` ID must be a string literal or a declared string variable.
+23,21,BUG : Undeclared identifier 'id4' used as `rdi.smartVec()` instance ID. The `smartVec` ID argument expects a string literal or a declared variable.
+23,25,"BUG : Incorrect method chain for ending burst upload. Expected `rdi.smartVec(""id"").burstUpload().end()`, found `rdi.burstUpload.smartVec().end()`."
+23,7,"BUG: Inconsistent smartVec IDs within burst upload; operations in `rdi.smartVec(""id"").burstUpload().begin()` do not contribute to the 'id' burst and are not retrievable by `rdi.id(""id"")`."
+4,3,BUG: The `vForce` value (31 V) exceeds the `vForceRange` (30 V) for the VS pin.
+4,4,BUG : Current clamp limits for LIN pin are inverted or malformed; positive clamp value (-5uA) is negative and negative clamp value (5uA) is positive.
+31,2,BUG: `std::vector<string>` object `vec_port1` has no member named `burst`.
+31,4,BUG: `vec_port2` variable is undeclared before use.
+31,5,BUG : `std::vector<string>` does not have a `push_forward()` method.
+31,6,BUG : `vec_port2` is undeclared.
+31,6,BUG: `std::vector<string>` does not have a `push_forward()` method; `push_back()` was likely intended.
+31,7,BUG : The variable `vec_port2` used in `rdi.runTimeVal()` is undeclared.
+17,8,"BUG: RDI API call 'getFFC()' is invoked after 'RDI_END()', indicating an operation outside the valid RDI configuration scope."
+17,8,"BUG: Configured 'FFV(10)' (Flash Fill Value) is retrieved using 'getFFC()' (Flash Fill Count), causing a semantic mismatch."
+27,5,"BUG : Current measurement on `dc(""im1"")` does not apply the 100uA range specified on the default `dc()` instance."
+27,5,"BUG: Pin 'DPS_1' has conflicting operations; 0.01V forced by the default 'dc()' instance and current measured by the 'dc(""im1"")' instance."
+27,3,"BUG: The voltage forced on 'DPS_1,DPS_2' via `vForce(0.01 V)` is not explicitly released or set to a safe state, potentially leaving the DUT powered."
+24,3,"BUG: `interS` is a function that requires `iBlockLength` and `iInterSkipSamples` arguments, but it is accessed without them."
+24,6,BUG: Pin name 'D0' configured for digital capture conflicts with 'DO' requested by getVector().
+14,7,BUG: Call to `getAlarmValue()` without a preceding alarm definition or trigger.
+14,8,BUG: Call to getAlarmBurstValue() for a measurement not configured for burst acquisition or alarm conditions.
+9,2,"BUG : rdi.cogo().wait() reinitializes the COGO context, preventing it from applying to the active sequence."
+9,2,"Invalid 'us' unit suffix for the literal '100' in `rdi.cogo().wait(100 us);`, causing a syntax error in standard C."
+9,3,"BUG: `rdi.cogo()` reinitializes COGO context, preventing `end()` from operating on a previously started sequence."
+9,3,BUG : The `rdi.cogo().end()` method is called twice consecutively without an intervening `begin()` call or state modification.
+13,3,BUG: Method 'getVesjkctor' is a typo and should be 'getVector'.
+13,4,BUG: Method 'getVslkhalue' is a typo for 'getValue'.
+13,5,BUG: Method 'getWlkjnaveform' is likely a typo for 'getWaveform'.
+22,3,BUG: The `readTempThresh` method is incorrectly invoked with a threshold value (70); read operations typically do not accept the value to be read as an input.
+29,4,BUG: retrievePmuxPinStatus return value ignored.
+29,5,BUG : The return value of `rdi.route().retrievePmuxPinStatus()` is ignored.
+29,6,BUG: The return value of rdi.route().retrievePmuxPinStatus() is ignored.
+29,6,"BUG : `rdi.route().retrievePmuxPinStatus()` is called with pin 'P0x08F1', but this pin is not defined in the routing setup file."
+2,1,BUG: `rdi.alarm().pin().enable(true)` activates an alarm without defining the necessary trigger conditions or thresholds for its operation.
+2,3,"Unit suffixes (V, mA) are incorrectly appended to numeric literals, leading to syntax errors."
+2,4,"BUG : Unit suffixes (V, uA) are incorrectly appended to numeric literals, leading to syntax errors."
+2,6,"BUG: Unit suffix 'ms' is incorrectly appended to the numeric literal in `rdi.wait(1 ms);`, causing a syntax error."
+20,1,"RDI command `digCapBurstSiteUpload` invoked outside an `RDI_BEGIN`/`RDI_END` block, potentially leading to improper execution or sequencing."
+20,4,BUG: The `rdi.digCap()` function's specified sample count `9216` exceeds the maximum `8192` allowed when digital capture burst site upload is active.
+11,2,"BUG: The `iRange` method incorrectly accepts 'mAh' (charge units); it expects current units (A, mA, uA)."
+3,4,BUG: `vForce(31 V)` for pin `m_rMcd.sP_VS` exceeds `vForceRange(30 V)`.
