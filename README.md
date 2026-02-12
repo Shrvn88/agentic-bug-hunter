@@ -26,17 +26,28 @@ This repository contains our implementation of that solution.
 
 ## 🧠 High-Level Architecture
 
-samples.csv (ID + Code)
-↓
-Gemini Reasoning Agent
-↓
-Bug Hypotheses (line + summary)
-↓
-MCP Server (manual/document search)
-↓
-Grounded Refinement
-↓
-final_report.csv (ID, bug_line, Explanation)
+         samples.csv (ID + Code)
+
+                  ↓
+
+        Gemini Reasoning Agent
+
+                  ↓
+
+      Bug Hypotheses (line + summary)
+
+                  ↓
+    
+    MCP Server (manual/document search)
+
+                  ↓
+                  
+          Grounded Refinement
+                  
+                  ↓
+                  
+           final_report.csv 
+      (ID, bug_line, Explanation)
 
 
 ---
@@ -81,42 +92,18 @@ final_report.csv (ID, bug_line, Explanation)
 
 ## 📂 Project Structure
 
-Agentic_Bug_Hunter/
-│
-├── agent_core/
-│ ├── auditor.py # Core agentic logic (LLM + MCP)
-│ ├── schemas.py # Pydantic data models
-│
-├── server/
-│ └── mcp_server.py # MCP server (manual/document retrieval)
-│
-├── data/
-│ ├── samples.csv # Input dataset
-│ └── final_report.csv # Generated output
-│
-├── main.py # Entry point
-├── requirements.txt
-└── README.md
+<img width="749" height="455" alt="image" src="https://github.com/user-attachments/assets/c86fb744-bd08-404b-bfa4-d9c48f7d0fc9" />
 
+
+
+### 📂 Input Format (samples.csv)
+
+<img width="1230" height="277" alt="image" src="https://github.com/user-attachments/assets/b7a7b77d-d339-4153-be02-811b632d1feb" />
 
 ---
 
-## ⚙️ Setup Instructions
+### 📊 Output Format (final_report.csv)
 
-### 1. Create Virtual Environment
+<img width="1664" height="357" alt="image" src="https://github.com/user-attachments/assets/2d798420-ff23-43c7-8193-9e6dc1fe21d7" />
 
-Linux / Mac:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-
-nput Format (samples.csv)
-ID,Code
-16,"rdi.smartVec().label().copyLabel()..."
-32,"rdi.port(""pt1"").dc().pin(""dig2"")..."
-
-📊 Output Format (final_report.csv)
-ID,bug_line,Explanation
-16,1,Use only the VTT mode for editing vectors when rdi.smartVec().label().copyLabel() is used for the label
-32,2,BUG : Port name & pin config mismatch instead of execute it will burst twice
+---
